@@ -4,6 +4,7 @@ import {
   BarChart3,
   Bot,
   Check,
+  Copy,
   Layers3,
   Mail,
   MessageCircle,
@@ -14,7 +15,7 @@ import {
   Users,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const contact = {
   phone: '19223576408',
@@ -169,10 +170,8 @@ function App() {
         '.project-context',
         '.project-metrics span',
         '.strength-card',
-        '.contact-visual',
         '.contact-card',
         '.contact-card > a',
-        '.contact-card-line',
       ].join(','),
     );
 
@@ -586,6 +585,38 @@ function Strengths() {
 }
 
 function Contact() {
+  const [copiedKey, setCopiedKey] = useState('');
+
+  const copyContact = async (key, value) => {
+    const fallbackCopy = () => {
+      const textarea = document.createElement('textarea');
+      textarea.value = value;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const succeeded = document.execCommand('copy');
+      textarea.remove();
+      return succeeded;
+    };
+
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      if (!fallbackCopy()) return;
+    }
+
+    setCopiedKey(key);
+    window.setTimeout(() => setCopiedKey(''), 1600);
+  };
+
+  const contactRows = [
+    { key: 'phone', label: 'PHONE', value: contact.phone, href: `tel:${contact.phone}`, icon: Phone },
+    { key: 'wechat', label: 'WECHAT', value: contact.wechat, icon: MessageCircle },
+    { key: 'email', label: 'EMAIL', value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
+  ];
+
   return (
     <footer className="contact-section" id="contact">
       <div className="contact-backdrop" aria-hidden="true" />
@@ -602,37 +633,38 @@ function Contact() {
         </div>
 
         <div className="contact-visual" data-reveal>
-          <img src="/assets/contact-wechat.jpg" alt="微信二维码" />
-          <div className="contact-visual-caption">
-            <span>SCAN TO CONNECT</span>
-            <strong>微信联系</strong>
-          </div>
+          <img src="/assets/contact-wechat-transparent.png" alt="微信二维码" />
         </div>
 
         <div className="contact-card" data-reveal>
           <span>AVAILABLE FOR INTERVIEW</span>
           <p>我目前正在寻找品牌内容营销、内容运营与内容策划相关机会，期待与你聊聊。</p>
-          <a href={`tel:${contact.phone}`}>
-            <Phone size={19} />
-            <div>
-              <small>PHONE</small>
-              <strong>{contact.phone}</strong>
-            </div>
-          </a>
-          <div className="contact-card-line">
-            <MessageCircle size={19} />
-            <div>
-              <small>WECHAT</small>
-              <strong>{contact.wechat}</strong>
-            </div>
-          </div>
-          <a href={`mailto:${contact.email}`}>
-            <Mail size={19} />
-            <div>
-              <small>EMAIL</small>
-              <strong>{contact.email}</strong>
-            </div>
-          </a>
+          {contactRows.map((item) => {
+            const Icon = item.icon;
+            const ValueTag = item.href ? 'a' : 'div';
+
+            return (
+              <div className="contact-card-line" key={item.key}>
+                <Icon size={19} />
+                <div className="contact-card-value">
+                  <small>{item.label}</small>
+                  <ValueTag href={item.href}>
+                    <strong>{item.value}</strong>
+                  </ValueTag>
+                </div>
+                <button
+                  className={`contact-copy-button ${copiedKey === item.key ? 'is-copied' : ''}`}
+                  type="button"
+                  onClick={() => copyContact(item.key, item.value)}
+                  aria-label={`复制${item.label}`}
+                  title={`复制 ${item.value}`}
+                >
+                  {copiedKey === item.key ? <Check size={15} /> : <Copy size={15} />}
+                  <span>{copiedKey === item.key ? '已复制' : '复制'}</span>
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="footer-line container">

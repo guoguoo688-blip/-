@@ -1042,14 +1042,30 @@ a {
   line-height: 1.8;
 }
 
-.contact-card > a,
 .contact-card-line {
   display: grid;
-  grid-template-columns: 24px 1fr;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
   padding: 20px 0;
   border-top: 1px solid var(--line);
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+.contact-card-line:hover,
+.contact-card-line:focus-within,
+.contact-card-line.glass-hovered,
+.contact-card-line.glass-pressed {
+  border-color: var(--line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  transform: none !important;
 }
 
 .contact-card svg {
@@ -1061,6 +1077,18 @@ a {
   display: block;
 }
 
+.contact-card-value {
+  min-width: 0;
+}
+
+.contact-card-value strong {
+  width: max-content;
+  max-width: 100%;
+  user-select: text;
+  cursor: text;
+  overflow-wrap: anywhere;
+}
+
 .contact-card small {
   margin-bottom: 5px;
   color: var(--muted);
@@ -1070,6 +1098,43 @@ a {
 
 .contact-card strong {
   font-size: 17px;
+}
+
+.contact-copy-button {
+  min-width: 72px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid rgba(82, 243, 237, 0.22);
+  border-radius: 10px;
+  color: #b8c1d1;
+  background: rgba(82, 243, 237, 0.04);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.contact-copy-button:hover {
+  color: #fff;
+  border-color: rgba(82, 243, 237, 0.52);
+  background: rgba(82, 243, 237, 0.1);
+}
+
+.contact-copy-button.is-copied {
+  color: #081313;
+  border-color: var(--cyan);
+  background: var(--cyan);
+}
+
+.contact-copy-button svg {
+  color: currentColor;
 }
 
 .footer-line {
@@ -1154,6 +1219,43 @@ a {
 .hero .hero-copy .status-pill > span {
   background: rgba(244, 114, 182, 0.92);
   box-shadow: 0 0 18px rgba(244, 114, 182, 0.72);
+}
+
+/* Refined vertical rhythm between the long-form portfolio sections */
+.content-video-stage .profile-section {
+  padding-top: 116px;
+  padding-bottom: 92px;
+}
+
+.content-video-stage .projects-section {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.content-video-stage .strengths-section {
+  padding-top: 96px;
+  padding-bottom: 90px;
+}
+
+.content-video-stage .section-title {
+  margin-bottom: 54px;
+}
+
+.content-video-stage .contact-section {
+  min-height: clamp(760px, 88vh, 940px);
+  justify-content: center;
+}
+
+.content-video-stage .contact-layout {
+  padding-top: 96px;
+  padding-bottom: 112px;
+}
+
+.content-video-stage .profile-section::after,
+.content-video-stage .projects-section::after,
+.content-video-stage .strengths-section::after {
+  inset: -72px 0;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
 }
 
 .profile-section .section-title h2 {
@@ -2493,8 +2595,8 @@ body::after {
 
 /* Contact composition: statement / WeChat visual / contact details */
 .contact-layout {
-  grid-template-columns: minmax(560px, 1.18fr) minmax(280px, 0.58fr) minmax(390px, 0.82fr);
-  gap: 38px;
+  grid-template-columns: minmax(520px, 1.08fr) minmax(350px, 0.68fr) minmax(390px, 0.82fr);
+  gap: 34px;
 }
 
 .contact-heading h2 {
@@ -2505,30 +2607,33 @@ body::after {
   position: relative;
   align-self: stretch;
   min-height: 520px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 28px;
-  background: rgba(8, 10, 24, 0.62);
-  box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.34),
-    0 0 60px rgba(82, 243, 237, 0.08);
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  pointer-events: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
 }
 
 .contact-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 58%, rgba(5, 7, 18, 0.88)),
-    linear-gradient(135deg, rgba(82, 243, 237, 0.08), transparent 38%);
+  content: none;
 }
 
 .contact-visual img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 0;
+  object-fit: contain;
   object-position: center;
+  filter: saturate(0.9) contrast(1.03) brightness(0.9);
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
 }
 
 .contact-visual-caption {
@@ -2556,8 +2661,8 @@ body::after {
 
 @media (max-width: 1380px) {
   .contact-layout {
-    grid-template-columns: minmax(460px, 1fr) minmax(250px, 0.55fr) minmax(350px, 0.78fr);
-    gap: 26px;
+    grid-template-columns: minmax(410px, 0.96fr) minmax(320px, 0.68fr) minmax(340px, 0.76fr);
+    gap: 24px;
   }
 
   .contact-heading h2 {
