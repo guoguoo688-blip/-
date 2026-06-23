@@ -169,6 +169,7 @@ function App() {
         '.project-context',
         '.project-metrics span',
         '.strength-card',
+        '.contact-visual',
         '.contact-card',
         '.contact-card > a',
         '.contact-card-line',
@@ -446,11 +447,7 @@ function Profile() {
 
         <div className="profile-grid">
           <div className="portrait-card" data-reveal>
-            <img src="/assets/avatar.jpeg" alt="郑强帅个人照片" />
-            <div className="portrait-caption">
-              <span>ZHENG QIANGSHUAI</span>
-              <strong>品牌内容营销 / 内容运营策划</strong>
-            </div>
+            <img src="/assets/profile-casual.jpg" alt="郑强帅个人照片" />
           </div>
 
           <div className="profile-content" data-reveal>
@@ -602,6 +599,14 @@ function Contact() {
             <br />
             做成结果。
           </h2>
+        </div>
+
+        <div className="contact-visual" data-reveal>
+          <img src="/assets/contact-wechat.jpg" alt="微信二维码" />
+          <div className="contact-visual-caption">
+            <span>SCAN TO CONNECT</span>
+            <strong>微信联系</strong>
+          </div>
         </div>
 
         <div className="contact-card" data-reveal>

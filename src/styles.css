@@ -2258,14 +2258,43 @@ body::after {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+  background: #080a17;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.42),
+    0 0 55px rgba(177, 140, 255, 0.08);
+}
+
+.portrait-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7, 8, 19, 0.08) 0%, transparent 38%, rgba(7, 8, 19, 0.88) 100%),
+    radial-gradient(circle at 50% 42%, transparent 28%, rgba(5, 7, 18, 0.2) 72%, rgba(5, 7, 18, 0.55) 100%),
+    linear-gradient(135deg, rgba(82, 243, 237, 0.06), transparent 36%, rgba(177, 140, 255, 0.08));
+  mix-blend-mode: normal;
+}
+
+.portrait-card::after {
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 50%, rgba(5, 7, 18, 0.9));
+}
+
+.portrait-card img {
+  object-position: center 46%;
+  filter: saturate(0.72) contrast(1.08) brightness(0.83) hue-rotate(-4deg);
+  transform: scale(1.025);
 }
 
 .portrait-caption {
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
-  background: rgba(8, 10, 22, 0.55);
+  background:
+    linear-gradient(135deg, rgba(82, 243, 237, 0.07), rgba(177, 140, 255, 0.05)),
+    rgba(8, 10, 22, 0.62);
   backdrop-filter: blur(16px);
 }
 
@@ -2460,6 +2489,88 @@ body::after {
     linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
     rgba(8, 10, 24, 0.66);
   box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
+}
+
+/* Contact composition: statement / WeChat visual / contact details */
+.contact-layout {
+  grid-template-columns: minmax(560px, 1.18fr) minmax(280px, 0.58fr) minmax(390px, 0.82fr);
+  gap: 38px;
+}
+
+.contact-heading h2 {
+  font-size: clamp(58px, 5.2vw, 94px);
+}
+
+.contact-visual {
+  position: relative;
+  align-self: stretch;
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  background: rgba(8, 10, 24, 0.62);
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.34),
+    0 0 60px rgba(82, 243, 237, 0.08);
+}
+
+.contact-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 58%, rgba(5, 7, 18, 0.88)),
+    linear-gradient(135deg, rgba(82, 243, 237, 0.08), transparent 38%);
+}
+
+.contact-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.contact-visual-caption {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.contact-visual-caption span {
+  color: var(--cyan);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.contact-visual-caption strong {
+  font-size: 16px;
+}
+
+@media (max-width: 1380px) {
+  .contact-layout {
+    grid-template-columns: minmax(460px, 1fr) minmax(250px, 0.55fr) minmax(350px, 0.78fr);
+    gap: 26px;
+  }
+
+  .contact-heading h2 {
+    font-size: clamp(52px, 5vw, 76px);
+  }
+
+  .contact-visual {
+    min-height: 480px;
+  }
+
+  .contact-card {
+    padding: 28px;
+  }
 }
 
 @keyframes cosmicDrift {
