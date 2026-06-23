@@ -111,6 +111,14 @@ const strengths = [
   },
 ];
 
+const coreCapabilities = [
+  '熟练运营抖音官号/商业IP/矩阵号，结合品牌定位、5A人群画像与营销节点，完成用户洞察、竞品分析、栏目规划及SOP搭建；具备星图达人筛选、商务沟通、Brief输出与脚本审核经验。',
+  '熟练运用AI贯穿选题、脚本、拍摄、剪辑、测试、放量到迭代全流程，根据投放表现快速调整钩子、卖点与内容形式，稳定为直播间提供引流与转化素材。',
+  '熟练使用千川、云图、聚光、有米云、电商罗盘、千瓜、新红等平台，能从消耗、点击率、进房率、转化率与ROI中诊断问题并输出具体修改方向。',
+  '熟练使用AI与Agent完成竞品整理、选题拓展、脚本初稿、素材拆解与数据归纳，聚焦内容判断与策略优化。',
+  '具备10+人团队及多项目并行管理经验，统筹人员分工、项目排期、内容审核、数据复盘与绩效管理。',
+];
+
 const experiences = [
   {
     time: '2025.10 — 2026.06',
@@ -162,10 +170,6 @@ function App() {
         '.portrait-card',
         '.portrait-caption',
         '.profile-statement',
-        '.profile-facts > div',
-        '.contact-strip',
-        '.contact-strip a',
-        '.contact-strip span',
         '.project-card',
         '.project-context',
         '.project-metrics span',
@@ -242,6 +246,13 @@ function Navigation() {
           <a href="#profile">关于我</a>
           <a href="#projects">精选项目</a>
           <a href="#strengths">个人优势</a>
+          <a
+            href="https://my.feishu.cn/docx/EpibdPa9yosYlex29YocqqTRn7c?from=from_copylink"
+            target="_blank"
+            rel="noreferrer"
+          >
+            作品集
+          </a>
         </div>
         <a className="nav-contact" href="#contact">
           联系我 <ArrowUpRight size={16} />
@@ -458,31 +469,13 @@ function Profile() {
               </p>
             </div>
 
-            <div className="profile-facts">
-              <div>
-                <span>核心方法</span>
-                <strong>策略 × 创意 × 数据 × AI</strong>
-              </div>
-              <div>
-                <span>教育背景</span>
-                <strong>四川传媒学院 · 摄影本科 · 专业前 5%</strong>
-              </div>
-              <div>
-                <span>求职方向</span>
-                <strong>品牌内容营销 / 内容运营 / 内容策划</strong>
-              </div>
-            </div>
-
-            <div className="contact-strip">
-              <a href={`tel:${contact.phone}`}>
-                <Phone size={17} /> {contact.phone}
-              </a>
-              <span>
-                <MessageCircle size={17} /> {contact.wechat}
-              </span>
-              <a href={`mailto:${contact.email}`}>
-                <Mail size={17} /> {contact.email}
-              </a>
+            <div className="profile-capabilities" data-reveal>
+              {coreCapabilities.map((item, index) => (
+                <article className="profile-capability-item" key={item}>
+                  <span>0{index + 1}</span>
+                  <p>{item}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
