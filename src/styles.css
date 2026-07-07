@@ -3368,3 +3368,172 @@ body::after {
     font-size: 14px;
   }
 }
+
+/* Profile photo ratio and compact copy refinement */
+.profile-grid {
+  align-items: start;
+  grid-template-columns: minmax(340px, 440px) minmax(0, 1fr);
+  gap: 52px;
+}
+
+.portrait-card {
+  aspect-ratio: 706 / 1058;
+  min-height: 0 !important;
+  height: auto;
+  align-self: start;
+}
+
+.portrait-card img {
+  height: 100%;
+  object-position: center center;
+  transform: none;
+}
+
+.profile-statement {
+  grid-template-columns: 26px 1fr;
+  gap: 16px;
+  padding: 24px 28px !important;
+}
+
+.profile-statement svg {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-statement p {
+  max-width: 100%;
+  font-size: 20px !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0;
+}
+
+.profile-facts > div {
+  min-height: 102px;
+  padding: 20px 22px;
+}
+
+.profile-facts strong {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.profile-capability-item {
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 78px;
+  padding: 16px 20px;
+}
+
+.profile-capability-item > span {
+  width: 38px;
+  height: 38px;
+  font-size: 10px;
+}
+
+.profile-capability-item p {
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1380px) {
+  .profile-grid {
+    grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .profile-statement p {
+    font-size: 18.5px !important;
+  }
+
+  .profile-capability-item p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-card {
+    width: min(100%, 360px);
+  }
+
+  .profile-statement {
+    grid-template-columns: 22px 1fr;
+    padding: 20px !important;
+  }
+
+  .profile-statement p {
+    font-size: 16px !important;
+  }
+}
+
+/* Compact education block replacing the former three profile fact cards */
+.profile-education {
+  margin-top: 0;
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  color: rgba(255, 255, 255, 0.88);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(82, 243, 237, 0.08), transparent 34%),
+    rgba(255, 255, 255, 0.024);
+  overflow: hidden;
+}
+
+.profile-education > span {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(116, 232, 255, 0.9);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.profile-education h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.profile-education-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.profile-education-meta p {
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px solid rgba(82, 243, 237, 0.22);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1;
+  background: rgba(82, 243, 237, 0.055);
+}
+
+.profile-education-courses {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1380px) {
+  .profile-education h3 {
+    font-size: 18px;
+  }
+
+  .profile-education-courses {
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-education {
+    padding: 18px;
+  }
+}

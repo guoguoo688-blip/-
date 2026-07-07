@@ -5,14 +5,11 @@ import {
   Bot,
   Check,
   Copy,
-  Layers3,
   Mail,
   MessageCircle,
   Phone,
   Play,
   Sparkles,
-  Target,
-  Users,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -137,45 +134,13 @@ const projects = [
   },
 ];
 
-const strengths = [
-  {
-    icon: Target,
-    label: 'STRATEGY',
-    title: '从品牌定位到内容资产',
-    text: '能把品牌调性、5A 人群、营销节点和产品卖点转译成主页内容、千川素材、达人 Brief 与矩阵账号 SOP，让内容不只好看，也能被复用和放大。',
-  },
-  {
-    icon: Bot,
-    label: 'AI WORKFLOW',
-    title: 'AI 与 Agent 提效',
-    text: '熟练将 AI 用在竞品整理、选题拓展、脚本初稿、数据归纳、文生图/视频和爆款画面裂变中，缩短素材制作周期并提升多项目并行效率。',
-  },
-  {
-    icon: BarChart3,
-    label: 'DATA',
-    title: '爆款拆解与投放复盘',
-    text: '熟练使用蝉妈妈、云图、有米云、飞瓜、千瓜等工具，围绕消耗、点击率、转化率、ROI 与 GSV 诊断素材问题，推动 A/B 测试和下一轮创意迭代。',
-  },
-  {
-    icon: Layers3,
-    label: 'CATEGORY',
-    title: '跨品类商业实战',
-    text: '覆盖九阳、六神、淘淘氧棉、红蜻蜓等小家电、个护、快消和服装项目，既做品牌官旗和内容种草，也做挂车转化与私域增长。',
-  },
-  {
-    icon: Users,
-    label: 'TEAM',
-    title: '团队与项目交付',
-    text: '具备 10 人内容与投放团队管理经验，能统筹分工、排期、审核、复盘和绩效，保障从洽谈签约到内容交付的全流程稳定推进。',
-  },
-];
-
 const coreCapabilities = [
-  '品牌运营 / 内容运营 / 千川编导复合背景，能从品牌定位、人群洞察、选题策划走到素材生产、投放复盘和商业转化。',
-  '熟练拆解同类目、同场景、同效果竞品，结合产品卖点与 5A 人群做 A/B 测试，持续沉淀爆款内容框架和素材库。',
-  '有九阳官旗、商业 IP、B 站/小红书矩阵、教育私域和知识付费项目经验，能在不同赛道快速迁移用户心智与内容逻辑。',
-  '习惯把 AI 与 Agent 融入日常工作，用于文案裂变、数据分析、脚本初稿、素材拆解和爆款画面复用。',
-  '具备 10 人团队与多项目并行管理经验，能把人员分工、项目排期、内容审核和数据复盘做成稳定交付机制。',
+  '熟练使用蝉妈妈、云图、飞瓜等工具追踪竞品，拆解爆款逻辑；结合产品卖点与5A人群，通过A/B测试及消耗、点击率、ROI等数据诊断，搭建爆款内容框架与素材库。',
+  '熟练运营官旗账号/商业IP/矩阵号运营，结合品牌定位、5A人群画像与营销节点，完成用户洞察、竞品分析及SOP搭建；',
+  '多品类行业经验：九阳、六神、淘淘氧棉，红蜻蜓等小家电、个护、快消品和服装类目；单月千万GMV；具备快速跨赛道用户心智与内容逻辑迁移能力；',
+  '熟练运用国内外AI与Agent工具，实现文案裂变、数据分析、文生图 / 视频及爆款画面复用，高效完成选题、脚本、素材拆解与数据归纳。',
+  '管理10人团队、多项目并行管理经验，统筹人员分工、项目排期、内容审核、数据复盘与绩效管理；',
+  '具备星图达人筛选、商务沟通、Brief输出与脚本审核经验。',
 ];
 
 const experiences = [
@@ -229,14 +194,13 @@ function App() {
         '.portrait-card',
         '.portrait-caption',
         '.profile-statement',
-        '.profile-facts > div',
+        '.profile-education',
         '.project-card',
         '.project-context',
         '.project-insight',
         '.project-takeaway',
         '.project-results',
         '.project-metrics span',
-        '.strength-card',
         '.contact-card',
         '.contact-card > a',
       ].join(','),
@@ -289,7 +253,6 @@ function App() {
         <div className="content-sections">
           <Profile />
           <Projects />
-          <Strengths />
           <Contact />
         </div>
       </div>
@@ -308,7 +271,6 @@ function Navigation() {
         <div className="nav-links">
           <a href="#profile">关于我</a>
           <a href="#projects">精选项目</a>
-          <a href="#strengths">个人优势</a>
           <a
             href="https://my.feishu.cn/docx/EpibdPa9yosYlex29YocqqTRn7c?from=from_copylink"
             target="_blank"
@@ -532,19 +494,17 @@ function Profile() {
               </p>
             </div>
 
-            <div className="profile-facts" data-reveal>
-              <div>
-                <span>求职方向</span>
-                <strong>品牌运营 / 内容运营 / 千川编导</strong>
+            <div className="profile-education" data-reveal>
+              <span>EDUCATION / 教育背景</span>
+              <h3>四川传媒学院 · 影视广播编导 · 本科</h3>
+              <div className="profile-education-meta">
+                <p>2020 - 2024</p>
+                <p>专业排名前 5%</p>
+                <p>GPA 3.5</p>
               </div>
-              <div>
-                <span>教育背景</span>
-                <strong>四川传媒学院 · 影视广播编导本科 · 专业前 5%</strong>
-              </div>
-              <div>
-                <span>专业基础</span>
-                <strong>GPA 3.5 · 市场营销 98 · 新媒体创作 95 · 影视编辑 96</strong>
-              </div>
+              <p className="profile-education-courses">
+                专业课程：人像摄影 96 / 新媒体概论 95 / 新媒体创作 95 / 市场营销 98 / 影视编辑 96
+              </p>
             </div>
 
             <div className="profile-capabilities" data-reveal>
@@ -655,36 +615,6 @@ function Projects() {
               </div>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Strengths() {
-  return (
-    <section className="section strengths-section" id="strengths">
-      <div className="container">
-        <SectionTitle
-          index="03"
-          eyebrow="WHY ME"
-          title="既能想清楚，也能做出来，更能用数据讲明白。"
-        />
-        <div className="strength-grid">
-          {strengths.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <article className="strength-card" key={item.title} data-reveal>
-                <div className="strength-top">
-                  <span>0{index + 1}</span>
-                  <Icon size={24} />
-                </div>
-                <p>{item.label}</p>
-                <h3>{item.title}</h3>
-                <div>{item.text}</div>
-              </article>
-            );
-          })}
         </div>
       </div>
     </section>
