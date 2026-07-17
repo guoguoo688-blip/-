@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import GlitchText from './components/GlitchText';
 
 const contact = {
   phone: '19223576408',
@@ -23,7 +24,7 @@ const contact = {
 const projects = [
   {
     number: '01',
-    period: '2025.07 - 2026.06',
+    period: '2025.10 - 2026.07',
     company: '杭州九阳生活电器有限公司',
     role: '内容运营',
     category: '官旗运营 · 千川编导 · 达人协同',
@@ -32,26 +33,31 @@ const projects = [
       '面向 220W+ 粉丝的九阳抖音官旗，我负责主页内容与产品千川素材的增长闭环：既要保证品牌官旗内容的稳定调性，也要把新品卖点、大促节点、5A 人群和投放数据转化成能跑量、能复用、能持续迭代的短视频素材。',
     highlights: [
       '内容策划上，结合品牌调性、销售节点和人群画像规划主页视频，明确不同产品在“认知、兴趣、转化”阶段的内容任务，并对接部门总监完成内容审核。',
-      '素材生产上，独立完成两个千川账户的选题、脚本、拍摄、剪辑与复盘，持续优化前 3 秒钩子、卖点顺序、口播节奏和画面组合。',
+      '素材生产上，负责九阳官旗千川账户的选题、策划、拍摄、剪辑与复盘，持续优化前 3 秒钩子、卖点顺序、口播节奏和画面组合。',
       '数据复盘上，利用 Agent 每日整理千川、云图、电商罗盘等数据，围绕点击、ROI、GSV 判断素材跑量或衰退原因，和投放团队共创下一轮测试方向。',
       '达人协同上，负责星图达人筛选、商务沟通、合作 Brief、脚本审核和效果复盘，把优质达人表达沉淀为后续可复用素材模板。',
     ],
     takeaway:
       '项目沉淀为“人群洞察 - 卖点拆解 - 素材脚本 - 投放复盘 - 爆款裂变”的千川内容 SOP，并用即梦、即创等 AI 工具把衰退素材二次裂变，缩短素材制作周期。',
     results: [
-      '负责账户支撑九阳官旗全域月均 GMV 1000W+，全域净成交 ROI 5+，月消耗 200W+；618 期间单日 GMV 峰值 135W+，大促期整体 ROI 稳定在 7+。',
+      '负责账户支撑九阳官旗全域月均 GMV 1000W+，全域净成交 ROI 5+，月消耗 200W+；618 期间单日 GMV 峰值 200W+，大促期整体 ROI 稳定在 7+，单日单视频 GMV 80W+。',
       '打造九阳官旗主页内容矩阵多条百万级播放爆款素材，累计带动粉丝增长 50W+。',
       '通过 A/B 测试与爆款裂变，素材点击率从入职时的 2.8% 提升至 5.58%，转化率提升 22%。',
       '云图衰退素材制作周期由 3 天压缩至 1 天，缩短 66%；AI 优化爆款素材后月均 GMV 额外提升 50W+。',
       '对接头部及腰部达人 50+ 位，交付素材 80+ 条，千川素材跑出率 65%，达人投产比 3.4。',
     ],
     image: '/assets/project-joyoung-cyber-final.png',
-    metrics: ['月均 GMV 1000W+', '大促 ROI 7+', '618 单日 135W+', '涨粉 50W+', 'CTR 5.58%', '素材周期 -66%'],
+    videos: [
+      { src: '/assets/videos/joyoung-k7-01.mp4', label: 'K7 内容素材 01' },
+      { src: '/assets/videos/joyoung-k7-02.mp4', label: 'K7 Pro · 豆花嘌呤清洗' },
+      { src: '/assets/videos/joyoung-k7-03.mp4', label: 'K7 离火版 · 送礼种草' },
+    ],
+    metrics: ['月均 GMV 1000W+', '大促 ROI 7+', '618 单日 200W+', '涨粉 50W+', 'CTR 5.58%', '素材周期 -66%'],
     accent: 'cyan',
   },
   {
     number: '02',
-    period: '2024.08 - 2025.07',
+    period: '2024.08 - 2025.10',
     company: '杭州时代芳华文化科技有限公司',
     role: '编导、运营主管',
     category: 'IP 孵化 · 矩阵搭建 · 10 人团队管理',
@@ -62,19 +68,24 @@ const projects = [
       '前期策略上，围绕客户产品、人设和成交链路拆解行业 IP 爆款逻辑，明确账号要解决的是信任建立、种草转化、挂车成交还是私域沉淀。',
       '内容执行上，统筹 10 人内容与投放团队，用蝉妈妈、千瓜等平台完成竞品拆解、选题规划、脚本审核、拍摄排期和投放诊断。',
       '项目管理上，借助 AI 跟进关键节点，统一选题表、脚本模板、审核标准和复盘口径，降低多项目并行时的沟通损耗。',
-      '商业结果上，支撑多个年服务费 100W+ 项目续约增购，并在淘淘氧棉、六神、红蜻蜓、教培、B 端矩阵和服装主理人项目中跑出可验证结果。',
+      '商业结果上，支撑多个年服务费 100W+ 项目续约增购，并在立白花植时代、淘淘氧棉、六神、教培、大健康矩阵和服装主理人项目中跑出可验证结果。',
     ],
     takeaway:
       '项目沉淀为多品牌内容交付 SOP：从“客户目标拆解 - 账号人设定位 - 爆款结构复刻 - 投放诊断 - 团队排期”五个环节提升交付稳定性。',
     results: [
       '签约多个年服务费 100W+ 项目，并支撑客户续约与增购，证明内容服务从交付型项目转向长期增长合作。',
-      '策划并编导打造多个主页百万级曝光内容，小黄车单视频 GMV 80W+。',
-      '淘淘氧棉、六神、红蜻蜓等视频挂车项目月均 GMV 300W+。',
+      '策划并编导打造多个主页百万级曝光内容，单视频单日 GMV 80W+。',
+      '立白花植时代、淘淘氧棉、六神等项目月均 GMV 300W+。',
       '从 0-1 搭建矩阵大健康行业账号及私域流程，月均新增私域 5000+，月度变现 500W+。',
-      '教培账号涨粉 19.7W+、变现 500W+；B 端多账号矩阵累计变现 1000W+；服装主理人账号涨粉 5.5W+，月变现 300W+。',
+      '从 0-1 孵化教培账号涨粉 19.7W+、月变现 500W+；服装主理人账号涨粉 5.5W+、月变现 300W+。',
     ],
     image: '/assets/project-brand-glass-transparent.png',
-    metrics: ['年服务项目 100W+', '单视频 GMV 80W+', '挂车月均 GMV 300W+', '教培涨粉 19.7W+', 'B端变现 1000W+'],
+    videos: [
+      { src: '/assets/videos/liushen-01.mp4', label: '六神 · 品牌内容案例' },
+      { src: '/assets/videos/taotao-yangmian-01.mp4', label: '淘淘氧棉 · 品牌内容案例' },
+      { src: '/assets/videos/ziyou-dian-01.mp4', label: '自由点 · 品牌内容案例' },
+    ],
+    metrics: ['年服务项目 100W+', '单视频单日 GMV 80W+', '月均 GMV 300W+', '教培涨粉 19.7W+', '服装涨粉 5.5W+'],
     accent: 'lime',
   },
   {
@@ -102,6 +113,11 @@ const projects = [
       '管理 6 人内容团队并建立培训体系，推动团队 GMV 同比增长 23%。',
     ],
     image: '/assets/project-education-ip.png',
+    videos: [
+      { src: '/assets/videos/yanlu-0717.mp4', label: '研路有你 · 7 月 17 日内容案例' },
+      { src: '/assets/videos/yanlu-case-02.mp4', label: '研路有你 · 内容案例 02' },
+      { src: '/assets/videos/yanlu-case-03.mp4', label: '研路有你 · 内容案例 03' },
+    ],
     metrics: ['IP 粉丝 15W+', '多个 100W+ 播放', '私域引流 50000+', '累计变现 1.2亿', '团队 GMV +23%'],
     accent: 'violet',
   },
@@ -129,6 +145,7 @@ const projects = [
       '沉淀高完播、高转化内容模型，为后续教育垂类账号和知识付费项目提供可复用经验。',
     ],
     image: '/assets/project-private-domain.png',
+    mediaImage: '/assets/nursing-xhs-profile.png',
     metrics: ['教材 40 万字', '沉淀粉丝 2000+', '私域用户 1500+', '盈利 10W+'],
     accent: 'gold',
   },
@@ -136,22 +153,23 @@ const projects = [
 
 const coreCapabilities = [
   '熟练使用蝉妈妈、云图、飞瓜等工具追踪竞品，拆解爆款逻辑；结合产品卖点与5A人群，通过A/B测试及消耗、点击率、ROI等数据诊断，搭建爆款内容框架与素材库。',
-  '熟练运营官旗账号/商业IP/矩阵号运营，结合品牌定位、5A人群画像与营销节点，完成用户洞察、竞品分析及SOP搭建；',
-  '多品类行业经验：九阳、六神、淘淘氧棉，红蜻蜓等小家电、个护、快消品和服装类目；单月千万GMV；具备快速跨赛道用户心智与内容逻辑迁移能力；',
+  '熟练运营官旗账号、商业IP与矩阵号，结合品牌定位、5A人群画像与营销节点，完成用户洞察、竞品分析及内容SOP搭建。',
+  '多品类行业经验：九阳、六神、淘淘氧棉、立白、红蜻蜓等小家电、个护、快消品和服装类目；单月千万GMV，具备快速跨赛道迁移用户心智与内容逻辑的能力。',
   '熟练运用国内外AI与Agent工具，实现文案裂变、数据分析、文生图 / 视频及爆款画面复用，高效完成选题、脚本、素材拆解与数据归纳。',
-  '管理10人团队、多项目并行管理经验，统筹人员分工、项目排期、内容审核、数据复盘与绩效管理；',
-  '具备星图达人筛选、商务沟通、Brief输出与脚本审核经验。',
+  '善于千川全域投流，能够结合千川、创作者中心等后台数据定位问题并持续优化爆款内容。',
+  '具备10人团队与多项目并行管理经验，统筹人员分工、项目排期、内容审核、数据复盘与绩效管理。',
+  '具备星图达人筛选、商务沟通、Brief输出、脚本审核与数据分析经验。',
 ];
 
 const experiences = [
   {
-    time: '2025.07 - 2026.06',
+    time: '2025.10 - 2026.07',
     company: '杭州九阳生活电器有限公司',
     role: '内容运营',
     summary: '抖音官旗 / 千川编导 / 达人协同',
   },
   {
-    time: '2024.08 - 2025.07',
+    time: '2024.08 - 2025.10',
     company: '杭州时代芳华文化科技有限公司',
     role: '编导、运营主管',
     summary: '品牌项目统筹 / 内容增长 / 团队管理',
@@ -266,7 +284,10 @@ function Navigation() {
       <nav className="nav container">
         <a className="logo" href="#home" aria-label="返回首页">
           <span className="logo-orbit" />
-          ZQS<span>®</span>
+          <GlitchText speed={1} enableShadows enableOnHover className="logo-glitch">
+            ZQS
+          </GlitchText>
+          <span className="logo-mark">®</span>
         </a>
         <div className="nav-links">
           <a href="#profile">关于我</a>
@@ -400,7 +421,7 @@ function Hero() {
             animate="visible"
             className="hero-intro"
           >
-            郑强帅 · 品牌运营 / 内容运营 / 千川编导
+            郑强帅 · 内容运营 / 千川编导
             <br />
             4 年新媒体实战，擅长用内容策略、AI 工作流与数据复盘，搭建从爆款生产到生意转化的闭环。
           </motion.p>
@@ -477,21 +498,13 @@ function Profile() {
         <SectionTitle
           index="01"
           eyebrow="PROFILE / ABOUT ME"
-          title="以品牌内容为入口，负责从策略到素材、投放协同与转化的闭环。"
+          title="以内容为入口，负责从策略到素材、投放协同与转化的闭环。"
         />
 
         <div className="profile-grid">
-          <div className="portrait-card" data-reveal>
-            <img src="/assets/profile-casual.jpg" alt="郑强帅个人照片" />
-          </div>
-
-          <div className="profile-content" data-reveal>
-            <div className="profile-statement">
-              <Sparkles size={24} />
-              <p>
-                我不是把内容当成单条作品来做，而是把它放进品牌、人群、货品、投放和转化链路里经营。
-                从九阳官旗到多品牌矩阵、从教育 IP 到私域课程，我更关注内容能否被复用、被测试、被放大，并最终带来结果。
-              </p>
+          <div className="profile-aside">
+            <div className="portrait-card" data-reveal>
+              <img src="/assets/profile-casual.jpg" alt="郑强帅个人照片" />
             </div>
 
             <div className="profile-education" data-reveal>
@@ -504,6 +517,16 @@ function Profile() {
               </div>
               <p className="profile-education-courses">
                 专业课程：人像摄影 96 / 新媒体概论 95 / 新媒体创作 95 / 市场营销 98 / 影视编辑 96
+              </p>
+            </div>
+          </div>
+
+          <div className="profile-content" data-reveal>
+            <div className="profile-statement">
+              <Sparkles size={24} />
+              <p>
+                我不是把内容当成单条作品来做，而是把它放进品牌、人群、货品、投放和转化链路里经营。
+                从九阳官旗到多品牌矩阵、从教育 IP 到私域课程，我更关注内容能否被复用、被测试、被放大，并最终带来结果。
               </p>
             </div>
 
@@ -562,6 +585,35 @@ function Projects() {
               key={project.title}
               data-reveal
             >
+              <div
+                className={`project-visual project-media-slot ${project.videos?.length ? 'has-videos' : ''} ${project.mediaImage ? 'has-image' : ''}`}
+                data-project={project.number}
+              >
+                {project.videos?.length ? (
+                  <div className="project-video-grid">
+                    {project.videos.map((video) => (
+                      <figure className="project-video-item" key={video.src}>
+                        <video controls muted playsInline preload="metadata">
+                          <source src={video.src} type="video/mp4" />
+                          你的浏览器暂不支持视频播放。
+                        </video>
+                        <figcaption>{video.label}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                ) : project.mediaImage ? (
+                  <img
+                    className="project-case-image"
+                    src={project.mediaImage}
+                    alt={`${project.title}案例截图`}
+                    loading="lazy"
+                  />
+                ) : null}
+                <div className="project-visual-meta">
+                  <span>CASE {project.number}</span>
+                  <strong>{project.role}</strong>
+                </div>
+              </div>
               <div className="project-info">
                 <div className="project-info-head">
                   <span className="project-number">{project.number}</span>
@@ -581,6 +633,14 @@ function Projects() {
                   ))}
                 </h3>
                 <p className="project-description">{project.description}</p>
+                <div className="project-metrics">
+                  {project.metrics.map((metric) => (
+                    <span key={metric}>
+                      <Check size={14} /> {metric}
+                    </span>
+                  ))}
+                </div>
+                <div className="project-section-label">APPROACH / 执行方法</div>
                 <div className="project-insights">
                   {project.highlights.map((highlight, index) => (
                     <div className="project-insight" key={highlight}>
@@ -600,13 +660,6 @@ function Projects() {
                       </p>
                     ))}
                   </div>
-                </div>
-                <div className="project-metrics">
-                  {project.metrics.map((metric) => (
-                    <span key={metric}>
-                      <Check size={14} /> {metric}
-                    </span>
-                  ))}
                 </div>
                 <div className="project-note">
                   CASE STUDY
@@ -675,7 +728,7 @@ function Contact() {
 
         <div className="contact-card" data-reveal>
           <span>AVAILABLE FOR INTERVIEW</span>
-          <p>我目前正在寻找品牌运营、内容运营与千川编导相关机会，期待与你聊聊。</p>
+          <p>我目前正在寻找内容运营与千川编导相关机会，期待与你聊聊。</p>
           {contactRows.map((item) => {
             const Icon = item.icon;
             const ValueTag = item.href ? 'a' : 'div';
