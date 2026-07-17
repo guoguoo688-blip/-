@@ -3735,6 +3735,24 @@ body::after {
   order: 1;
 }
 
+/* Keep all video-led case studies on the same side as the Times Fanghua card. */
+.projects-section .project-card-01,
+.projects-section .project-card-03 {
+  grid-template-columns: minmax(0, 64%) minmax(330px, 36%);
+}
+
+.projects-section .project-card-01 .project-visual,
+.projects-section .project-card-03 .project-visual {
+  order: 2;
+  border-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.projects-section .project-card-01 .project-info,
+.projects-section .project-card-03 .project-info {
+  order: 1;
+}
+
 .projects-section .project-visual {
   position: relative;
   min-height: 100%;
